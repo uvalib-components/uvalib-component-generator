@@ -1,0 +1,14 @@
+{
+  "name": "generator-uvalib-web-component",
+  "version": "0.0.1",
+  "description": "Web component generator for the UVA Library",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  }
+}
