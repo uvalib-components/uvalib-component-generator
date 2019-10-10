@@ -1,32 +1,22 @@
 {
   "name": "<%= name %>",
-  "version": "0.0.1",
-  "description": "<%= description %>",
-  "main": "index.js",
-  "repository": "uvalib-components/<%= name %>",
-  "scripts": {
-    "copyindex": "cp src/index.html build",
-    "copywc": "cp -r node_modules/@webcomponents/webcomponentsjs/bundles build && cp node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js build",
-    "build": "rm -rf build && mkdir build && npm run copyindex && npm run copywc && rollup -c",
-    "start": "serve build"
-  },
-  "author": "UVA Library UX",
-  "license": "BSD-3-Clause",
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/plugin-proposal-decorators": "^7.2.3",
-    "rollup": "^1.1.0",
-    "rollup-plugin-babel": "^4.3.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "@webcomponents/webcomponentsjs": "^2.2.4",
-    "serve": "^10.1.1"
-  },
+  "main": "<%= name %>.js",
   "dependencies": {
-<% if (type == "lit") { %>
-    "lit-element": "^2.2.1"
-<% } else if (type == "polymer") { %>
-    "@polymer/polymer": "^3.3.0"
-<% } %>
+    "@polymer/polymer": "^3.0.0"
+  },
+  "devDependencies": {
+    "@polymer/iron-component-page": "^3.0.0-pre.20",
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "polymer-cli": "^1.9.11",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "wct-mocha": "^1.0.1"
+  },
+  "scripts": {
+    "start": "npx polymer serve",
+    "test": "npx polymer test",
+    "build": "npx polymer analyze -i <%= name %>.js > analysis.json; npx polymer build"
   }
 }

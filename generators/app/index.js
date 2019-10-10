@@ -38,7 +38,7 @@ module.exports = class extends Generator {
         message: "What type of component do you want?",
         choices: [
 //          {name:"Vanilla Web Component",value:"vanilla"},
-          {name:"Lit-Element Web Component",value:"lit"},
+//          {name:"Lit-Element Web Component",value:"lit"},
           {name:"Polymer 3 Web Component",value:"polymer"}
         ]
       }
@@ -60,8 +60,12 @@ module.exports = class extends Generator {
       this.destinationPath('.gitignore'),
       this.props);
     this.fs.copyTpl(
-      this.templatePath('src/_element.js'),
-      this.destinationPath(`src/${name}.js`),
+      this.templatePath('_element.js'),
+      this.destinationPath(`${name}.js`),
+      this.props);
+    this.fs.copyTpl(
+      this.templatePath('test/_element_test.html'),
+      this.destinationPath(`test/${name}_test.html`),
       this.props);
   }
 
