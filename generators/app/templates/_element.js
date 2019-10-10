@@ -3,6 +3,7 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 /**
  * `<%= name %>`
  *
+ * <%= description %>
  *
  * @customElement
  * @polymer
@@ -21,6 +22,7 @@ class <%= elementClassName %> extends PolymerElement {
   }
   static get properties() {
     return {
+      /** An awesome property */
       prop1: {
         type: String,
         value: '<%= name %>',
