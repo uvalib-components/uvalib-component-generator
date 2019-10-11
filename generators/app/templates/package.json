@@ -12,11 +12,16 @@
     "polymer-cli": "^1.9.11",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
-    "wct-mocha": "^1.0.1"
+    "wct-mocha": "^1.0.1",
+    "lighthouse": "^5.5.0",
+    "static-http2-server": "^1.7.2"
   },
   "scripts": {
     "start": "npx polymer serve",
     "test": "npx polymer test",
-    "build": "npx polymer analyze -i <%= name %>.js > analysis.json; npx polymer build"
+    "build": "npx polymer analyze -i <%= name %>.js > analysis.json; npx polymer build",
+    "start-http2": "npx nohup npx http2-server build/default/ -P > /dev/null 2>&1 &",
+    "stop-http2": "ps -ef | grep http2-server | grep -v grep | awk '{print $2}' | xargs kill -9",
+    "perf-report": "npm run start-http2; lighthouse https://0.0.0.0:4443/demo/ --budget-path=budget.json --output=json --output-path=report.json --chrome-flags=\"--ignore-certificate-errors\"; npm run stop-http2;"
   }
 }

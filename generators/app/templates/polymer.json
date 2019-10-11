@@ -4,5 +4,7 @@
     "rules": [
       "polymer-3"
     ]
-  }
+  },
+  "entrypoint": "index.html",
+  "extraDependencies": ["<%= name %>.js","demo/index.html","analysis.json","node_modules/@polymer/iron-demo-helpers/**"]
 }
